@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "newPassword1",
-    "database": "bookStore",
-    "host": "127.0.0.1",
+    "username": "Tyler",
+    "password": "eevee",
+    "database": "bookstore",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   },
