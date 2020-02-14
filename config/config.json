@@ -1,9 +1,8 @@
-//make sure to update this with your own information below
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "newPassword1",
+    "database": "bookStore",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
