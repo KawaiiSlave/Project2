@@ -18,10 +18,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-
-
-
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+// Each of the below routes just handles the HTML page that the user gets sent to.
   app.get("/Nozama", function(req, res) {
       res.render("index", {title: "Home Page"});
 });
