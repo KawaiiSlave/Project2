@@ -1,11 +1,15 @@
-$(function(){
-    $(".search").on("click", function(event) {
+ $("#getButton").on("click", function(event) {
         event.preventDefault();
-        let searchItem = $(".searchItem").text();
+        let authorName = $("#authorTextbox").text();
+        let titleName = $("#titleTextbox").text();
 
-        $.ajax("/search/" + searchItem, {
-            type: "GET"
-            }).then(
-        );
+
+        $.ajax("/api/booksearch", {
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
     });
+
 });
+
+ 
