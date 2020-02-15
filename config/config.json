@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "Rongho89$",
+    "username": "Tyler",
+    "password": "eevee",
     "database": "bookstore",
     "host": "localhost",
     "dialect": "mysql",
