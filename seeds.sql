@@ -1,7 +1,7 @@
 USE bookstore; 
 
 INSERT INTO books (author_name, title, category, published_year, price)
-VALUES ("Mark Twain", " The Adventures of Tom Sawyer ", "Children's Literature", "1876", 19.99);
+VALUES ("Mark Twain", " The Adventures of Tom Sawyer ", "Children's Literature", 1876, 19.99);
 
 INSERT INTO books (author_name, title, category, published_year, price)
 VALUES ("William Shakespeare", "Romeo Juliet", "drama", 1576, "19.99");
@@ -23,6 +23,5 @@ VALUES ("tomhank", "pass123");
 
 INSERT INTO user ( username, password)
 VALUES ("bradpitt", "123pass");
-
 
 
