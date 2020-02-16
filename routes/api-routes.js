@@ -5,9 +5,11 @@ var axios = require("axios");
 module.exports = function(app) {
   // Get all books
   app.get("/api/booksearch", function(req, res) {
-      axios.get("https://www.goodreads.com/search.xml?key=HER3irixwdL4F1V9kfig&q=harrypotter")
+      axios.get("https://www.goodreads.com/search.xml?key=HER3irixwdL4F1V9kfig&format=json&q=harrypotter")
         .then(function(res){
             console.log(res);
+        }).catch(function(err){
+            console.log(err)
         })  
       })
   };
