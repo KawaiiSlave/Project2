@@ -18,10 +18,10 @@ VALUES ("A Tale of Two Cities","Charles Dickens","1");
 INSERT INTO cart (title, author_name, quantity)
 VALUES ("The Adventure of Tom Sawyer","Mark Twain","1");
 
-INSERT INTO user ( username, password)
+INSERT INTO user (username, password)
 VALUES ("tomhank", "pass123");
 
-INSERT INTO user ( username, password)
+INSERT INTO user (username, password)
 VALUES ("bradpitt", "123pass");
 
 
