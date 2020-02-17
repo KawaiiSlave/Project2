@@ -4,13 +4,17 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "bulma": "^0.8.0",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.7.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+<<<<<<< HEAD
     "nodemon": "^2.0.2",
+=======
+    "path": "^0.12.7",
+>>>>>>> master
     "sequelize": "^5.21.4"
   },
   "devDependencies": {},
