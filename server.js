@@ -11,14 +11,12 @@ app.use(express.static("./public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var exphbs = require("express-handlebars");
+// Set Handlebars.
+const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Import routes and give the server access to them.
-var routes = require("./routes/controller.js");
-app.use(routes);
 
 // Each of the below routes just handles the HTML page that the user gets sent to.
   app.get("/", function(req, res) {
