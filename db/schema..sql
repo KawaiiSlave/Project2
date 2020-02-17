@@ -1,0 +1,27 @@
+
+DROP DATABASE IF EXISTS bookstore;
+CREATE DATABASE bookstore;
+
+USE bookstore;
+
+
+CREATE TABLE books (
+id INT NOT NULL AUTO_INCREMENT,
+author_name VARCHAR( 255) NOT NULL,
+title VARCHAR (255) NOT NULL,
+category VARCHAR(255) NOT NULL,
+published_year VARCHAR(255) NOT NULL,
+price DECIMAL(8, 2) NOT NULL,
+PRIMARY KEY(id) 
+);
+
+CREATE TABLE cart ( 
+title VARCHAR(255) NOT NULL,
+author_name VARCHAR(255) NOT NULL,
+quantity DECIMAL(5,2) NOT NULL
+);
+
+CREATE TABLE user (
+username VARCHAR(255) NOT NULL,
+password VARCHAR (255) NOT NULL
+);
