@@ -1,0 +1,14 @@
+body,html,.navbar {
+    background-image: url("../images/books.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+}
+
+.navbar-item:hover {
+    background-color: black;
+}
+
+
+

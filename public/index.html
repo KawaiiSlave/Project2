@@ -7,47 +7,64 @@
     <title>Document</title>
     <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Nozama</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"></ul>
-     
+                  <!--Navbar-->
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="http://localhost:8080">
+            <img src="../images/Nozamalogo.png" width="112" height="28">
+          </a>
+      
+          
 
-      <div class="control">
-        <input class="input" type="text" placeholder="Search for a book">
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
+    <!-- Search Button, and input field for ajax/axios calls-->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button id="searchBtn" class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
+            </div>
+            <input type="text" class="form-control" placeholder="Look for a book title.." aria-label="Example text with button addon" aria-describedby="button-addon1">
           </div>
+          </div>
+
+
+        <!-- Cart Icon for accessing the users cart-->
+<span class="icon has-text-info">
+  <button class="btn has-text-white is-small"><i class="fas fa-shopping-bag"></i></button>
+</span>
+      
+        
+
+        <!--Log in, and Sign up Buttons-->
+        <div class="field is-grouped is-grouped-right">
+          <p class="control">
+            <a class="button is-primary">
+              Log In
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-light">
+              Sign Up
+            </a>
+          </p>
         </div>
-      </div>
-    </div>
-  </nav>
-
-</nav>
 
 
 
-  
-    
-<script src="\js\books.js"></script>
+            
+
+
+
+
+
+
+
+
 </body>
-</html>
+
+
+
