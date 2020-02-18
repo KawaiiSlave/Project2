@@ -1,5 +1,5 @@
 body,html,.navbar {
-    background-image: url("../images/books.jpg");
+    background-image: url("/public/books.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
