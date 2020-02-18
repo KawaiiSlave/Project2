@@ -1,17 +1,23 @@
-var Book = require("../models/book.js");
-var axios = require("axios");
-// Routes
-// =============================================================
-module.exports = function(app) {
-  // Get all books
-  app.get("/api/booksearch", function(req, res) {
-      axios.get("https://www.goodreads.com/search.xml?key=HER3irixwdL4F1V9kfig&format=json&q=harrypotter")
-        .then(function(res){
-            console.log(res);
-        }).catch(function(err){
-            console.log(err)
-        })  
-      })
-  };
+let express = require("express");
+let router = express.Router();
+let db = require("../models");
 
+//routing that allows the admin to add new books 
+  router.post("/api/books", function(req, res) {
+  
+  });
+  
+//routing that allows the admin to update a book  
+  router.put("/api/books/:id", function(req, res) {
+   
+  });
+  
+//routing that allows the admin to delete a selected book
+  router.delete("/api/books/:id", function(req, res) {
+      db.Books.destroy({where:{
+          id: req.params.itemId
+      }}).then(function(dbBooks){
+          res.json(dbBooks);
+      });
+  });
 
