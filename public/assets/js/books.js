@@ -1,4 +1,3 @@
-
 function bookSearch( ){
     var search = document.getElementById('search').value
     document.getElementById('results').innerHTML = ""
@@ -22,4 +21,5 @@ function bookSearch( ){
     });
 }
 
-document.getElementById('button').addEventListener('click', bookSearch, false)
+$(".signIn").click(function(){ console.log("I am properly linked!")});
+$('button').click(bookSearch);

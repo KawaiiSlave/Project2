@@ -17,8 +17,9 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+let routes = require('./routes/controller')
+app.use('/routes',routes);
 
-<<<<<<< HEAD
 // Each of the below routes just handles the HTML page that the user gets sent to.
   app.get("/", function(req, res) {
       res.render("index", {title: "Home Page"});
@@ -41,8 +42,6 @@ app.get("/search", function(req, res) {
 });
 
 
-=======
->>>>>>> master
 app.listen(PORT, function() {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);

@@ -2,6 +2,7 @@ let express = require("express");
 let router = express.Router();
 let db = require("../models");
 
+//Routes the user to frontpage, then fetches data from the books database
 router.get("/", function(req, res) {
     db.Books.findAll({}).then(function(data) {
         let booksItem = {
@@ -11,6 +12,7 @@ router.get("/", function(req, res) {
       });
 });
 
+//Grabs user data from the database in order to verify the user's login
 router.get("/login/:username", function(req, res) {
     db.Users.findAll({where:{
         username: req.params.username
@@ -19,6 +21,7 @@ router.get("/login/:username", function(req, res) {
       });
 });
 
+//Grabs data from the database that matches the user's search item
 router.get("/search/:searchItem", function(req, res) {
     db.Books.findAll({where:{
         [Books.or]:[
@@ -33,6 +36,7 @@ router.get("/search/:searchItem", function(req, res) {
       });
 });
 
+//grabs data from the database that matches a category that the user chooses
 router.get("/search/category/:searchItem", function(req, res) {
     db.Books.findAll({where:{
           category: req.params.searchItem
@@ -44,6 +48,7 @@ router.get("/search/category/:searchItem", function(req, res) {
       });
 });
 
+//grabs data from the database for a specific item
 router.get("/item/:itemId", function(req, res) {
     db.Books.findAll({where:{
         id: req.params.itemId
@@ -52,22 +57,6 @@ router.get("/item/:itemId", function(req, res) {
             book: data
         }
         res.render("item", booksItem);
-    });
-});
-
-router.post("/api/books", function(req, res) {
-  
-});
-
-router.put("/api/books/:id", function(req, res) {
- 
-});
-
-router.delete("/api/books/:id", function(req, res) {
-    db.Books.destroy({where:{
-        id: req.params.itemId
-    }}).then(function(dbBooks){
-        res.json(dbBooks);
     });
 });
 
