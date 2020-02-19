@@ -18,10 +18,13 @@ PRIMARY KEY(id)
 CREATE TABLE cart ( 
 title VARCHAR(255) NOT NULL,
 author_name VARCHAR(255) NOT NULL,
-quantity DECIMAL(5,2) NOT NULL
+quantity DECIMAL(5,2) NOT NULL,
+book_id INT(4) NOT NULL,
+userName_id INT(4) NOT NULL
 );
 
 CREATE TABLE user (
 username VARCHAR(255) NOT NULL,
-password VARCHAR (255) NOT NULL
+password VARCHAR (255) NOT NULL,
+admin BOOL DEFAULT FALSE
 );
