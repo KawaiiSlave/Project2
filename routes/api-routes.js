@@ -21,34 +21,5 @@ let db = require("../models");
       });
   });
 
-$("#searchBtn").click(function() {
-    outputList.innerHTML = ""
-    searchData = $("#searchBar").val();
-    //if search bar is empty
-    if(searchData === "" || searchData === null) {
-        displayError
-    } 
-    else {
-        $.ajax({
-            url: bookUrl + searchData,
-            datatype: "json",
-            success: function(res) {
-                console.log(res)
-                if(response.totalItem === 0) {
-                    alert("no results..try again!");
-                }
-                else {
-                    $("title").anitem({'margin-top: 10px'});
-                    $("book-list").css('visibility: visible');
-                    displayResults(res);
-                }
-            }
-            error: function() {
-                alert("Something went wrong!...");
-            }
-        })
-    }
-    $.("#searchBar").val("");
-  })
-})
+
 
