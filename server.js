@@ -25,7 +25,7 @@ app.use('/routes',routes);
       res.render("index", {title: "Home Page"});
 });
 
-  app.get("/books", function(req, res) {
+  app.get("/book", function(req, res) {
     res.render("item", {title: "Card catalogue"});
 });
 

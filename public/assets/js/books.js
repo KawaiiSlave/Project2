@@ -1,11 +1,11 @@
-function bookSearch( ){
+function bookSearch(){
     var search = document.getElementById('search').value
     document.getElementById('results').innerHTML = ""
     document.getElementById('img').innerHTML = ""
     console.log(search)
 
     $.ajax({
-       url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
+       url: "http://www.googleapis.com/books/v1/volumes?q=" + search,
         type: "GET",
         dataType: "json",
         success: function(data) {
