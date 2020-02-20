@@ -1,4 +1,3 @@
-USE bookstore; 
 
 INSERT INTO books (author_name, title, category, published_year, price)
 VALUES ("Mark Twain", " The Adventures of Tom Sawyer ", "Children's Literature", "1876", 19.99);
@@ -18,8 +17,8 @@ VALUES ("A Tale of Two Cities","Charles Dickens","1",3,1);
 INSERT INTO cart (title, author_name, quantity,book_id,userName_id)
 VALUES ("The Adventure of Tom Sawyer","Mark Twain","1",1,2);
 
-INSERT INTO user ( username, password)
-VALUES ("tomhank", "pass123");
+INSERT INTO user ( username, password, admin)
+VALUES ("tomhank", "pass123",true);
 
 INSERT INTO user ( username, password)
 VALUES ("bradpitt", "123pass");
