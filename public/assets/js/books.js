@@ -31,6 +31,7 @@ $(function(){
             url: "/search/"+searchItem,
             type: "GET",
             success: console.log("search called!")
+
         },
         error = function(XMLHttpRequest, textStatus, errorThrown) {
            alert("some error");
