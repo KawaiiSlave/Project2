@@ -8,6 +8,10 @@ body,html,.navbar {
     color: white;
 }
 
+.navbar-link {
+  color:white;
+}
+
 
 
 
@@ -148,3 +152,8 @@ button {
   margin-left: 50px;
   background: #666;
   }
+
+
+.card-deck1 {
+  float: left;
+}
