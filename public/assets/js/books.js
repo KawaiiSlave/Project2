@@ -25,23 +25,29 @@ $(function(){
 
     //function to call search results from the db
     function dbSearch(){
-        let searchItem = $("#searchBar").val();
-        console.log(searchItem);
-        $.ajax({
-            url: "/search/"+searchItem,
-            type: "GET",
-            success: console.log("search called!")
-
-        },
-        error = function(XMLHttpRequest, textStatus, errorThrown) {
-           alert("some error");
-        });
+        //console.log($("#searchBar").val()+" Hello");
+        if(!$("#searchBar").val() || 0 === $("#searchBar").val().length){
+            location.assign("/search/any");
+        }else{
+            let searchItem = $("#searchBar").val(); 
+            console.log(searchItem);
+            location.assign("/search/"+searchItem);
+        }
     }
 
     $("#searchBtn").click(function(event){
         event.preventDefault();
         dbSearch();
     });
+
+    //function to search by category
+    function category(btn){
+        let searchItem = btn;
+        console.log(searchItem);
+        location.assign("/search/category/"+searchItem)
+    }
+
+    //$(".categoryBtn").click(category(this));
 
     //function to validate a sign in
     function signIn(){
@@ -50,21 +56,13 @@ $(function(){
 
     //function to call the admin page
     function admin(){
-        $.ajax({
-            url: "/admin",
-            type: "GET",
-            dataType: "json",
-            success: console.log("admin called!")
-        });
+        location.assign("/admin");
     }
 
     //function to call the cart page
     function cart(){
-        $.ajax({
-            url: "/cart/"+userId,
-            type: "GET",
-            dataType: "json",
-            success: console.log("cart called!")
+        location.assign('/cart/'+userId, function(){
+            console.log("Front cart called");
         });
     }
     $("#cart").click(cart);
@@ -72,15 +70,8 @@ $(function(){
     //function to call the home page
     function homePage(){
         console.log("I work!")
-        $.ajax({
-            url: "/",
-            type: "GET",
-            dataType: "json",
-            success: console.log("homepage called!")
-        });
+        location.assign('/');
     }
-
-    homePage();
 
     $("#homePage").click(homePage);
 

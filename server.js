@@ -15,8 +15,8 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-let routes = require('./routes/controller')
-app.use(routes);
+require("./routes/api-routes.js")(app);
+require("./routes/controller.js")(app);
 
 
 app.listen(PORT, function() {
