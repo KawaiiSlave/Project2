@@ -2,6 +2,7 @@ const express = require("express");
 const PORT = process.env.PORT || 8080;
 const app = express();
 const exphbs = require("express-handlebars");
+let db = require("./models")
 
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -18,12 +19,12 @@ app.set("view engine", "handlebars");
 require("./routes/api-routes.js")(app);
 require("./routes/controller.js")(app);
 
-
-app.listen(PORT, function() {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
-  });
-
+db.sequelize.sync().then(function(){
+  app.listen(PORT, function() {
+      // Log (server-side) when our server has started
+      console.log("Server listening on: http://localhost:" + PORT);
+    });
+})
 
   
 

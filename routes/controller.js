@@ -1,6 +1,7 @@
 let express = require("express");
 const path = require("path");
 let db = require("../models");
+const { Op } = require("sequelize");
 module.exports = function(app){
 
     //Routes the user to frontpage, then fetches data from the books database
@@ -25,54 +26,54 @@ module.exports = function(app){
 
     //Grabs data from the database that matches the user's search item
     app.get("/search/:searchItem", function(req, res) {
-        //db.Books.findAll({where:{
-        //    [db.Books.or]:[
-        //    {title: req.params.searchItem},
-        //    {author: req.params.searchItem}
-         //   ]
-        //}}).then(function(data) {
-         //   let booksItem = {
-          //      book: data
-            //}
-            res.render("search", {title: "search"} );
-        //});
+        db.Book.findAll({where:{
+            [Op.or]:[
+                {title: req.params.searchItem},
+                {author_name: req.params.searchItem}
+            ]
+        }}).then(function(data) {
+            let booksItem = {
+                book: data
+            }
+            res.render("search", {title: "search",books: booksItem.book} );
+        });
     });
 
     //grabs data from the database that matches a category that the user chooses
     app.get("/search/category/:searchItem", function(req, res) {
-        //db.Books.findAll({where:{
-        //    category: req.params.searchItem
-        //}}).then(function(data) {
-        //    let booksItem = {
-        //        book: data
-        //    }
-            res.render("search", {title: "categories"});
-        //});
+        db.Book.findAll({where:{
+            category: req.params.searchItem
+        }}).then(function(data) {
+           let booksItem = {
+                book: data
+            }
+            res.render("search", {title: req.params.searchItem,books: booksItem.book});
+        });
     });
 
     //grabs data from the database for a specific item
     app.get("/item/:itemId", function(req, res) {
-        db.Books.findAll({where:{
+        db.Book.findOne({where:{
             id: req.params.itemId
         }}).then(function(data){
             let booksItem = {
-                book: data
+                book: data.dataValues
             }
-            res.render("item", booksItem);
+            res.render("item", {title: booksItem.book.title, book: booksItem.book, description: "Coming soon"});
         });
     });
 
     //grabs data from the database for a user's cart
     app.get("/cart/:userId", function(req, res) {
         console.log("GET ROUTE cart called");
-        //db.Cart.findAll({where:{
-        //    id: req.params.userId
-        //}}).then(function(data){
-        //    let cartItems = {
-        //        cart: data
-        //    }
-        //    
-        //});
-        res.render("cart",{title: "cart"});
+        db.Cart.findAll({where:{
+            user_id: req.params.userId
+        }}).then(function(data){
+            let cartItems = {
+                cart: data
+            } 
+            res.render("cart",{title: "cart",cart: cartItems.cart});
+        });
+        
     });
 };

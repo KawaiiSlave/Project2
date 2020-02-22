@@ -1,27 +1,5 @@
 $(function(){
-    let userId = 0;
-    function bookSearch( ){
-        var search = document.getElementById('search').value
-        document.getElementById('results').innerHTML = ""
-        document.getElementById('img').innerHTML = ""
-        console.log(search)
-
-        $.ajax({
-        url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-                for( i = 0; i < data.items.length; i++){
-                    results.innerHTML += "<h3>" + data.items[i].volumeInfo.title + "</h3>",
-                    results.innerHTML += "<h4>" + data.items[i].volumeInfo.publishedDate + "</h4>"
-                    results.innerHTML += "<h5>" + data.items[i].volumeInfo.authors + "</h5>"
-                    results.innerHTML += "<h6>" + data.items[i].volumeInfo.categories + "</h6>"
-                
-                }
-                console.log(data)
-            },
-        });
-    }
+    let userId = 1;
 
     //function to call search results from the db
     function dbSearch(){
@@ -46,8 +24,23 @@ $(function(){
         console.log(searchItem);
         location.assign("/search/category/"+searchItem)
     }
+    $(".categoryBtn").on("click", function(event) {
+        let cat = $(this).text().trim();
+        console.log(cat);
+        category(cat);
+    });
 
-    //$(".categoryBtn").click(category(this));
+    //function to show the page for a particular item
+    function item(btn){
+        let searchItem = btn;
+        location.assign("/item/"+searchItem)
+    }
+    $(".itemBtn").on("click", function(event) {
+        let itemVar = $(this).data("id");
+        descriptionCall($(this).text());
+        console.log(itemVar);
+        item(itemVar);
+    });
 
     //function to validate a sign in
     function signIn(){
@@ -69,7 +62,6 @@ $(function(){
 
     //function to call the home page
     function homePage(){
-        console.log("I work!")
         location.assign('/');
     }
 
@@ -77,4 +69,62 @@ $(function(){
 
     $("#signIn").click(function(){ console.log("I am properly linked!")});
     //$('button').click(bookSearch);
+
+    function descriptionCall(title){
+        console.log(title);
+        let key = "RpVA17xyVHAld7H5pTkfAKKERTZy3LVY";
+        title = title.replace(/ /g,"+");
+        let queryUrl = "https://api.nytimes.com/svc/books/v3/reviews.json?title=" + title +"&api-key="+key;
+        console.log(queryUrl);
+        $.ajax({
+            url: queryUrl,
+            type: "GET"
+         }).then(function(response) {
+            console.log(response);
+            if(response.results){
+                $("#descContainer").text(response.results.summary);
+            }
+            }
+    )};
+    
+
+    //function delete a book from the cart
+    function cartDelete(id){
+        $.ajax("/api/cart/" + id, {
+            type: "DELETE"
+            }).then(
+            function() {
+                console.log("deleted book", id);
+                location.reload();
+            }
+            );
+    }
+    $(".delete").click(function(){
+        let id = $(this).data("id");
+        cartDelete(id)
+    })
+
+    //function to add a book to the cart
+    function cartAdd(newBook){
+        $.ajax("/api/cart", {
+            type: "POST",
+            data: newBook
+          }).then(
+            function() {
+              console.log("added a new book to your cart");
+            }
+          );
+    }
+
+    $(".addBtn").click(function(){
+        let bookData = {
+            title: $(this).data("title"),
+            author_name: $(this).data("author"),
+            quantity: 1,
+            book_id: $(this).data("id"),
+            user_id: userId
+        }
+        console.log(bookData);
+        cartAdd(bookData);
+    });
 })
