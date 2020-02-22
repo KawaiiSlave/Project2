@@ -31,15 +31,17 @@ $(function(){
     });
 
     //function to show the page for a particular item
-    function item(btn){
+    function item(btn,searchItm){
         let searchItem = btn;
-        location.assign("/item/"+searchItem)
+        location.assign("/item/"+searchItem);//.then(
+        //    descriptionCall(searchItm)
+        //);
     }
     $(".itemBtn").on("click", function(event) {
         let itemVar = $(this).data("id");
-        descriptionCall($(this).text());
+        let search = $(this).text()
         console.log(itemVar);
-        item(itemVar);
+        item(itemVar,search);
     });
 
     //function to validate a sign in
@@ -69,8 +71,19 @@ $(function(){
 
     $("#signIn").click(function(){ console.log("I am properly linked!")});
     //$('button').click(bookSearch);
+    console.log(location.pathname);
+    let startPath = location.pathname
+    let locPath = startPath.slice(0,6);
 
-    function descriptionCall(title){
+    console.log(locPath);
+
+    if(locPath === "/item/"){
+        console.log("Page loaded");
+        descriptionCall();
+    }
+
+    function descriptionCall(){
+        let title = $("#title").text();
         console.log(title);
         let key = "RpVA17xyVHAld7H5pTkfAKKERTZy3LVY";
         title = title.replace(/ /g,"+");
@@ -81,9 +94,11 @@ $(function(){
             type: "GET"
          }).then(function(response) {
             console.log(response);
-            if(response.results){
-                $("#descContainer").text(response.results.summary);
-            }
+            console.log("Api called");
+                $("#descContainer").text(response.results['0'].summary);
+                $("#reviewUrl").text("New York Times Review")
+                $("#reviewUrl").attr("href", response.results['0'].url);
+            
             }
     )};
     
