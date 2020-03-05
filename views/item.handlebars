@@ -6,7 +6,7 @@
       <img src="https://lh3.googleusercontent.com/proxy/4jwnJTNF2HqFq5pzyW6C7wIUx1_ooyLQD7mJt8_S8HTeuE68XksDb5m0ISQm5PGLj-RADBoP0Ey9-BW3Thv340G1aWgpYVEoiIUm3A0nXleizIeyoku1M-4ZykFHMI5EKnQ7sw" width="250" alt="Book cover" />
     </div>
     <div class="product-info">
-      <h1>{{book.title}}</h1>
+      <h1 id = "title">{{book.title}}</h1>
       <p class="price">${{book.price}}.00</p>
       <br>
       <p class="description">by {{book.author_name}}</p>
@@ -14,6 +14,7 @@
       <p class="description">{{book.published_year}}</p>
       <br>
       <p id = "descContainer" class="description" ></p>
+      <a id = "reviewUrl" class="description" ></a>
       Quantity:
       <select class="color">
           <option>1</option>
